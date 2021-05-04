@@ -29,7 +29,7 @@ def build_task_predictor(input_shape):
 
 img_shape = (28, 28, 1)
 
-numpy_zip = np.load(r'/home/s-sd/Desktop/task_amenability_repo/data/corrupted/pneumoniamnist_corrupted.npz')
+numpy_zip = np.load(r'pneumoniamnist_experiment/pneumoniamnist_corrupted.npz')
 
 x_train, y_train = numpy_zip['x_train'], numpy_zip['y_train']
 x_val, y_val = numpy_zip['x_val'], numpy_zip['y_val']
@@ -85,7 +85,7 @@ task_predictor_batch_size = 256
 
 num_train_episodes = 512
 
-save_path = r'/home/s-sd/Desktop/task_amenability_repo/final_models/pneumoniamnist_experiment_train_session'
+save_path = r'pneumoniamnist_experiment/final_models/pneumoniamnist_experiment_train_session'
 
 controller_weights_save_path = save_path + 'controller_episode_' + str(num_train_episodes)
 task_predictor_save_path = save_path + 'task_predictor_episode_' + str(num_train_episodes)
