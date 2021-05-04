@@ -137,4 +137,6 @@ for rejection_ratio in np.arange(0.0, 0.5, 0.1):
     performances.append(performance)
 
 plt.plot(performances)
+# after loading in trained model  we get [0.8365384615384616, 0.8434163703188777, 0.8420000009536743, 0.8375286045281783, 0.8346666649182638]
+
 
