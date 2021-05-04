@@ -1,3 +1,4 @@
+
 from interface import DDPGInterface
 
 from keras import layers
@@ -78,37 +79,16 @@ def build_actor_critic(img_shape, action_shape=(1,)):
     critic = keras.Model(inputs=[action_input, observation_input], outputs=x)
     return actor, critic, action_input
 
-actor, critic, action_input = build_actor_critic(img_shape)
 
 controller_batch_size = 512
 task_predictor_batch_size = 256
 
-interface = DDPGInterface(x_train, y_train, x_val, y_val, x_holdout, y_holdout, task_predictor, img_shape,
-                          custom_controller=True, actor=actor, critic=critic, action_input=action_input,
-                          modify_env_params=True, modified_env_params_list=[controller_batch_size, task_predictor_batch_size])
-
-
 num_train_episodes = 512
 
-interface.train(num_train_episodes)
-
-save_dir = '/home/s-sd/Desktop/task_amenability_repo/temp'
-
-if not os.path.exists(save_dir):
-    os.mkdir(save_dir)
-
-save_path = os.path.join(save_dir, 'pneumoniamnist_experiment_train_session')
+save_path = r'/home/s-sd/Desktop/task_amenability_repo/final_models/pneumoniamnist_experiment_train_session'
 
 controller_weights_save_path = save_path + 'controller_episode_' + str(num_train_episodes)
 task_predictor_save_path = save_path + 'task_predictor_episode_' + str(num_train_episodes)
-
-interface.save(controller_weights_save_path=controller_weights_save_path,
-               task_predictor_save_path=task_predictor_save_path)
-
-del interface
-del actor 
-del critic
-del action_input
 
 actor, critic, action_input = build_actor_critic(img_shape)
 
@@ -137,4 +117,5 @@ for rejection_ratio in np.arange(0.0, 0.5, 0.1):
     performances.append(performance)
 
 plt.plot(performances)
+
 

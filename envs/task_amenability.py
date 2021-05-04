@@ -29,7 +29,7 @@ class TaskAmenability(gym.Env):
         self.task_predictor_batch_size = 32
         self.epochs_per_batch = 2
         
-        self.img_shape = (96, 96, 1)
+        self.img_shape = img_shape
         
         self.num_val = len(self.x_val)
         

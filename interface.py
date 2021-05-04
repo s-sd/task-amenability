@@ -146,6 +146,7 @@ class DDPGInterface():
         if load_models:
             self.train(1)
             self.agent.load_weights(controller_weights_save_path)
+            self.task_predictor = load_model(task_predictor_save_path)
                         
     def train(self, num_episodes):
         self.agent.fit(self.env, int(num_episodes*self.n_rollout_steps))
