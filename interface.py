@@ -76,7 +76,7 @@ class PPOInterface():
         
         
 class DDPGInterface():
-    def __init__(self, x_train, y_train, x_val, y_val, x_holdout, y_holdout, task_predictor, img_shape, load_models=False, controller_weights_save_path=None, task_predictor_save_path=None):
+    def __init__(self, x_train, y_train, x_val, y_val, x_holdout, y_holdout, task_predictor, img_shape, load_models=False, controller_weights_save_path=None, task_predictor_save_path=None, custom_controller=False, actor=None, critic=None, action_input=None, modify_env_params=False, modified_env_params_list=None):
         
         self.x_holdout, self.y_holdout = x_holdout, y_holdout
         
@@ -91,33 +91,37 @@ class DDPGInterface():
         
         n_actions = self.env.action_space.shape[0]
         
-        act_in = layers.Input((1,) + self.env.observation_space.shape)
-        act_in_reshape = layers.Reshape((self.env.img_shape))(act_in)
-        act_x = layers.Conv2D(32, (3,3), activation='relu')(act_in_reshape)
-        act_x = layers.MaxPool2D((2,2))(act_x)
-        act_x = layers.Conv2D(32, (3,3), activation='relu')(act_x)
-        act_x = layers.MaxPool2D((2,2))(act_x)
-        act_x = layers.Flatten()(act_x)
-        act_x = layers.Dense(16, activation='relu')(act_x)
-        act_x = layers.Dense(16, activation='relu')(act_x)
-        act_x = layers.Dense(16, activation='relu')(act_x)
-        act_out = layers.Dense(n_actions, activation='sigmoid')(act_x)
-        actor = keras.Model(inputs=act_in, outputs=act_out)
-        
-        action_input = layers.Input(shape=(n_actions,), name='action_input')
-        observation_input = layers.Input((1,) + self.env.observation_space.shape, name='observation_input')
-        observation_input_reshape = layers.Reshape((self.env.img_shape))(observation_input)
-        observation_x = layers.Conv2D(32, (3,3), activation='relu')(observation_input_reshape)
-        observation_x = layers.MaxPool2D((2,2))(observation_x)
-        observation_x = layers.Conv2D(16, (3,3), activation='relu')(observation_x)
-        observation_x = layers.MaxPool2D((2,2))(observation_x)
-        flattened_observation = layers.Flatten()(observation_x)
-        x = layers.Concatenate()([action_input, flattened_observation])
-        x = layers.Dense(32, activation='relu')(x)
-        x = layers.Dense(32, activation='relu')(x)
-        x = layers.Dense(32, activation='relu')(x)
-        x = layers.Dense(1)(x)
-        critic = keras.Model(inputs=[action_input, observation_input], outputs=x)
+        if not custom_controller:
+            act_in = layers.Input((1,) + self.env.observation_space.shape)
+            act_in_reshape = layers.Reshape((self.env.img_shape))(act_in)
+            act_x = layers.Conv2D(32, (3,3), activation='relu')(act_in_reshape)
+            act_x = layers.MaxPool2D((2,2))(act_x)
+            act_x = layers.Conv2D(32, (3,3), activation='relu')(act_x)
+            act_x = layers.MaxPool2D((2,2))(act_x)
+            act_x = layers.Flatten()(act_x)
+            act_x = layers.Dense(16, activation='relu')(act_x)
+            act_x = layers.Dense(16, activation='relu')(act_x)
+            act_x = layers.Dense(16, activation='relu')(act_x)
+            act_out = layers.Dense(n_actions, activation='sigmoid')(act_x)
+            actor = keras.Model(inputs=act_in, outputs=act_out)
+            
+            action_input = layers.Input(shape=(n_actions,), name='action_input')
+            observation_input = layers.Input((1,) + self.env.observation_space.shape, name='observation_input')
+            observation_input_reshape = layers.Reshape((self.env.img_shape))(observation_input)
+            observation_x = layers.Conv2D(32, (3,3), activation='relu')(observation_input_reshape)
+            observation_x = layers.MaxPool2D((2,2))(observation_x)
+            observation_x = layers.Conv2D(16, (3,3), activation='relu')(observation_x)
+            observation_x = layers.MaxPool2D((2,2))(observation_x)
+            flattened_observation = layers.Flatten()(observation_x)
+            x = layers.Concatenate()([action_input, flattened_observation])
+            x = layers.Dense(32, activation='relu')(x)
+            x = layers.Dense(32, activation='relu')(x)
+            x = layers.Dense(32, activation='relu')(x)
+            x = layers.Dense(1)(x)
+            critic = keras.Model(inputs=[action_input, observation_input], outputs=x)
+        else:
+            assert isinstance(actor, keras.engine.training.Model)
+            assert isinstance(critic, keras.engine.training.Model)
         
         memory_limit = int(6*self.n_rollout_steps)
         warmup_steps = int(2*self.n_rollout_steps)
@@ -133,6 +137,11 @@ class DDPGInterface():
         
         self.agent.compile(Adam(lr=.001, clipnorm=1.), metrics=['mae'])
 
+        if modify_env_params:
+            controller_batch_size = modified_env_params_list[0]
+            task_predictor_batch_size = modified_env_params_list[1]
+            self.env.controller_batch_size = controller_batch_size
+            self.env.task_predictor_batch_size = task_predictor_batch_size
         
         if load_models:
             self.train(1)
@@ -144,7 +153,7 @@ class DDPGInterface():
     def get_controller_preds_on_holdout(self):
         actions = []
         for i in range(len(self.x_holdout)):
-            pred = self.agent.actor.predict()
+            pred = self.agent.actor.predict(np.expand_dims(self.x_holdout[i:i+1, :, :, :], axis=0))[0][0]
             actions.append(pred)
 
         return np.array(actions)
