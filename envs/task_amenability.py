@@ -20,10 +20,6 @@ class TaskAmenability(gym.Env):
         
         self.task_predictor = task_predictor
         
-        # self.task_predictor = self.build_task_predictor(img_shape)
-        # self.task_predictor.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-        
-        
         
         self.controller_batch_size = 64
         self.task_predictor_batch_size = 32
@@ -110,17 +106,3 @@ class TaskAmenability(gym.Env):
     
     def save_task_predictor(self, task_predictor_save_path):
         self.task_predictor.save(task_predictor_save_path)
-    
-
-    # def build_task_predictor(self, input_shape):
-    #     inputs = keras.Input(shape=input_shape)
-    #     x = layers.Conv2D(32, (3,3), activation='relu')(inputs)
-    #     x = layers.MaxPool2D((2,2))(x)
-    #     x = layers.Conv2D(32, (3,3), activation='relu')(x)
-    #     x = layers.MaxPool2D((2,2))(x)
-    #     x = layers.Flatten()(x)
-    #     x = layers.Dense(64, activation='relu')(x)
-    #     x = layers.Dropout(0.3)(x)
-    #     x = layers.Dense(32, activation='relu')(x)
-    #     outputs = layers.Dense(1, activation='sigmoid')(x)
-    #     return keras.Model(inputs=inputs, outputs=outputs)
