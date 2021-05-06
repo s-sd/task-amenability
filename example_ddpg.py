@@ -5,6 +5,8 @@ import keras
 
 import numpy as np
 
+import os
+
 def build_task_predictor(input_shape):
     inputs = keras.Input(shape=input_shape)
     x = layers.Conv2D(32, (3,3), activation='relu')(inputs)
@@ -39,6 +41,11 @@ task_predictor.compile(optimizer='adam', loss='binary_crossentropy', metrics=['a
 interface = DDPGInterface(x_train, y_train, x_val, y_val, x_holdout, y_holdout, task_predictor, img_shape)
 
 interface.train(6)
+
+save_dir = 'temp'
+
+if not os.path.exists(save_dir):
+    os.mkdir(save_dir)
 
 controller_weights_save_path = r'temp/train_session_1_ddpg_controller'
 task_predictor_save_path = r'temp/train_session_1_task_predictor'
