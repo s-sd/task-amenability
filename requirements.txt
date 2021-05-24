@@ -8,7 +8,7 @@ future==0.18.2
 gast==0.4.0
 grpcio==1.37.1
 gym==0.17.3
-h5py==3.2.1
+h5py==2.10.0
 importlib-metadata==4.0.1
 joblib==1.0.1
 Keras==2.2.4
