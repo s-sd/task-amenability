@@ -109,12 +109,22 @@ def compute_mean_performance(x, y, interface):
     mean_performance_metric = interface.task_predictor.evaluate(x, y)
     return mean_performance_metric[-1]
 
+def compute_std(x, y, interface, samples, sample_size):
+    means = []
+    for _ in range(samples):
+        inds = np.random.choice(range(len(x)), sample_size, replace=False)
+        mean = compute_mean_performance(x[inds], y[inds], interface)
+        means.append(mean)
+    return np.std(means)
 
 performances = []
+variances = []
 for rejection_ratio in np.arange(0.0, 0.5, 0.1):
     selected_x_holdout, selected_y_holdout = reject_lowest_controller_valued_samples(rejection_ratio, holdout_controller_preds, x_holdout, y_holdout)
     performance = compute_mean_performance(selected_x_holdout, selected_y_holdout, interface)
     performances.append(performance)
+    variance = compute_std(selected_x_holdout, selected_y_holdout, interface, samples=100, sample_size=100)
+    variances.append(variance)
 
 plt.plot(performances)
 
