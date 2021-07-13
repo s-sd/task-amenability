@@ -39,8 +39,8 @@ class TaskAmenability(gym.Env):
         
     def get_batch(self):
         shuffle_inds = np.random.permutation(len(self.y_train))
-        self.x_train, self.y_train = self.x_train[shuffle_inds, :, :, :], self.y_train[shuffle_inds]
-        return self.x_train[:self.controller_batch_size, :, :, :], self.y_train[:self.controller_batch_size]
+        self.x_train, self.y_train = self.x_train[shuffle_inds], self.y_train[shuffle_inds]
+        return self.x_train[:self.controller_batch_size], self.y_train[:self.controller_batch_size]
 
     def compute_moving_avg(self):
         self.val_metric_list = self.val_metric_list[-10:]
@@ -70,7 +70,7 @@ class TaskAmenability(gym.Env):
         if self.sample_num_count < self.controller_batch_size+self.num_val:
             reward = 0
             done = False
-            return self.x_data[self.sample_num_count, :, :, :], reward, done, {}
+            return self.x_data[self.sample_num_count], reward, done, {}
         
         else:
             x_train_selected, y_train_selected = self.select_samples(self.actions_list[:self.controller_batch_size])
@@ -102,7 +102,7 @@ class TaskAmenability(gym.Env):
         self.actions_list = []
         self.sample_num_count = 0
 
-        return self.x_train_batch[self.sample_num_count, :, :, :]
+        return self.x_train_batch[self.sample_num_count]
     
     def save_task_predictor(self, task_predictor_save_path):
         self.task_predictor.save(task_predictor_save_path)
