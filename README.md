@@ -96,3 +96,9 @@ controller_preds = interface.get_controller_preds_on_holdout()
 The task predictor is `interface.task_predictor` and can be used in the same way as a `keras` or `tensorflow` model. 
 
 For more advanced functionality like controller selection on the holdout set and the use of a custom controller with the `DDPGInterface`, please see `pneumoniamnist_experiment.py`. To use a custom controller with the `PPOInterface` please refer to guidance [here](https://stable-baselines.readthedocs.io/en/master/guide/custom_policy.html) and modify line 43 in `interface.py` accordingly. If the sorting algorithm used for controller selection of the holdout set needs to be modified, please refer to the guidance [here](https://numpy.org/doc/stable/reference/generated/numpy.argsort.html) and modify line 123 in `pneumonia_experiment.py` and line 103 in `pneumoniamnist_experiment_test_final_models.py`, accordingly.
+
+#### Notes on dependencies
+
+To install dependencies simply run `pip install -r requirements.txt`.
+
+If this is stuck on `Building wheel for opencv-python (PEP 517) ...` then simply run `pip install opencv-python==4.5.1.48` prior to installing dependencies from `requirements.txt`.
