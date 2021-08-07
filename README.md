@@ -99,6 +99,6 @@ For more advanced functionality like controller selection on the holdout set and
 
 #### Notes on dependencies
 
-To install dependencies simply run `pip install -r requirements.txt`.
+To install dependencies run the command `pip install -r requirements.txt`.
 
-If this is stuck on `Building wheel for opencv-python (PEP 517) ...` then simply run `pip install opencv-python==4.5.1.48` prior to installing dependencies from `requirements.txt`.
+If this is stuck on `Building wheel for opencv-python (PEP 517) ...` then run `pip install opencv-python==4.5.1.48` prior to installing dependencies from `requirements.txt`.
