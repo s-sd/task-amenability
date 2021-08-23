@@ -25,7 +25,7 @@ To initialise the interface, we need the dataset and task predictor network. The
 - `task_predictor`: a `keras` or `tensorflow` model whcih has been compiled
 - `img_shape`: shape of a single image in the dataset  
 
-`x_{set}` are the input images and `y_{set}` are ground truth labels for the target task. The dimensions of `x_{set}` must be `samples x height x width x channels` in the case that image data is being used; `img_shape` must then be a tuple `(height, width, channels)` (non-image data may be used as input in which case `img_shape` will be the shape of the a single non-image data sample and line 42, 43, 73 and 105 may need to be modified in `envs/task_amenability.py`, however, we have not tested our code with non-image data). The shape of `y_{set}` must be the number of samples along the first dimension and the other dimensions depend on the target task. As an example, if the labels are binary classification labels then `y_set` must have the shape `samples x 1`.
+`x_{set}` are the input images and `y_{set}` are ground truth labels for the target task. The dimensions of `x_{set}` must be `samples x height x width x channels` in the case that image data is being used; `img_shape` must then be a tuple `(height, width, channels)` (non-image data may be used as input in which case `img_shape` will be the shape of the a single non-image data sample and line 42, 43, 73 and 105 may need to be modified in `envs/task_amenability.py` alongside the controller architecture, however, we have not tested our code with non-image data). The shape of `y_{set}` must be the number of samples along the first dimension and the other dimensions depend on the target task. As an example, if the labels are binary classification labels then `y_set` must have the shape `samples x 1`.
 
 The `task_predictor` can be a simple neural network model which has inputs of the shape `img_shape` and it must perform the target task, therefore, the output shape depends on the target task. For a binary image classification task, a model can be created and compiled as follows (note that this is just an example model to demonstrate the functionality of the interface, we did not tune the architecture or any hyper-parameters for this model and we do not recommend the use of this model for any target task, please see `pneumoniamnist_experiment.py` for an example of a larger model which was used in one of our experiments):
 
@@ -71,7 +71,7 @@ Training using the interface is simple and can be done by calling the `train` me
 interface.train(1024)
 ```
 
-The the controller weights and task predictor model can be saved by calling `save` with arguments being the save path for the controller weights and the save path for the task predictor weights:
+The controller weights and task predictor model can be saved by calling `save` with arguments being the save path for the controller weights and the save path for the task predictor weights:
 
 ```
 interface.save(controller_weights_save_path=controller_weights_save_path,
