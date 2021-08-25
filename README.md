@@ -13,8 +13,8 @@ Affiliations:
 
 ### Previous works
 
-[Saeed et al. 2021a](https://link.springer.com/chapter/10.1007/978-3-030-78191-0_58)  
-[Saeed et al. 2021b](https://arxiv.org/abs/2108.04359)
+1) [Saeed, S.U., Fu, Y., Baum, Z.M., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Barratt, D.C. and Hu, Y., 2021, June. Learning image quality assessment by reinforcing task amenable data selection. In International Conference on Information Processing in Medical Imaging (pp. 755-766). Springer, Cham.](https://link.springer.com/chapter/10.1007/978-3-030-78191-0_58)  
+2) [Saeed, S.U., Fu, Y., Stavrinides, V., Baum, Z., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Noble, J.A., Barratt, D.C. and Hu, Y., 2021. Adaptable image quality assessment using meta-reinforcement learning of task amenability. arXiv preprint arXiv:2108.04359.](https://arxiv.org/abs/2108.04359)
 
 ## Image quality assessment using task amenable data selection
 
