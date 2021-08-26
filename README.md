@@ -1,6 +1,6 @@
 # Image quality assessment for machine learning tasks using meta-reinforcement learning
 
-Note: This repository is presented as support material for a journal paper submission.
+Note: This repository presents the code and the public dataset experiments, described in the following submitted paper.
 
 Authors: Shaheer U. Saeed [1], Yunguan Fu [1, 2], Vasilis Stavrinides [3, 4], Zachary M. C. Baum [1], Qianye Yang [1], Mirabela Rusu [5], Richard E. Fan [6], Geoffrey A. Sonn [5, 6], J. Alison Noble [7], Dean C. Barratt [1], Yipeng Hu [1, 7].
 
@@ -9,8 +9,8 @@ Affiliations:
 [2] InstaDeep, London, UK.  
 [3] Division of Surgery \& Interventional Science, University College London, London, UK.  
 [4] Department of Urology, University College Hospital NHS Foundation Trust, London, UK.  
-[5] Department of Radiology, Stanford School of Medicine, Stanford, California, USA.  
-[6] Department of Urology, Stanford School of Medicine, Stanford, California, USA.  
+[5] Department of Radiology, Stanford University, Stanford, California, USA.  
+[6] Department of Urology, Stanford University, Stanford, California, USA.  
 [7] Department of Engineering Science, University of Oxford, Oxford, UK.
 
 ### Previous works
