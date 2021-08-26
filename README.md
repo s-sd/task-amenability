@@ -5,9 +5,9 @@ _This repository presents the code and the public dataset experiments, described
 Authors: Shaheer U. Saeed [1], Yunguan Fu [1, 2], Vasilis Stavrinides [3, 4], Zachary M. C. Baum [1], Qianye Yang [1], Mirabela Rusu [5], Richard E. Fan [6], Geoffrey A. Sonn [5, 6], J. Alison Noble [7], Dean C. Barratt [1], Yipeng Hu [1, 7].
 
 Affiliations:  
-[1] Centre for Medical Image Computing, 
-    Wellcome/EPSRC Centre for Interventional \& Surgical Sciences, and 
-    Department of Medical Physics \& Biomedical Engineering, 
+[1] Centre for Medical Image Computing,  
+    Wellcome/EPSRC Centre for Interventional \& Surgical Sciences, and  
+    Department of Medical Physics \& Biomedical Engineering,  
     University College London, London, UK.  
 [2] InstaDeep, London, UK.  
 [3] Division of Surgery \& Interventional Science, University College London, London, UK.  
