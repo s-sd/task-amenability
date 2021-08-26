@@ -1,4 +1,6 @@
-# Task amenable data selection
+# Image quality assessment for machine learning tasks using meta-reinforcement learning
+
+Note: This repository is presented as support material for a journal paper submission.
 
 Authors: Shaheer U. Saeed [1], Yunguan Fu [1, 2], Vasilis Stavrinides [3, 4], Zachary M. C. Baum [1], Qianye Yang [1], Mirabela Rusu [5], Richard E. Fan [6], Geoffrey A. Sonn [5, 6], J. Alison Noble [7], Dean C. Barratt [1], Yipeng Hu [1, 7].
 
