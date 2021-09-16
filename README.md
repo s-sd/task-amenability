@@ -1,6 +1,6 @@
 # Image quality assessment for machine learning tasks using meta-reinforcement learning
 
-_This repository presents the some of the code used for experiments described in the following submitted work._
+_This repository presents some of the code used for experiments described in the following submitted work._
 
 Authors: Shaheer U. Saeed [1], Wen Yan [1], Yunguan Fu [1, 2], Francesco Giganti [3, 4], Qianye Yang [1], Zachary M. C. Baum [1], Mirabela Rusu [5], Richard E. Fan [6], Geoffrey A. Sonn [5, 6], Mark Emberton [3, 7], Dean C. Barratt [1], Yipeng Hu [1].
 
