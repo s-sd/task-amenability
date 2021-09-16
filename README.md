@@ -43,7 +43,7 @@ To initialise the interface, we need the dataset and task predictor network. The
 - `x_train`, `y_train`: train set samples
 - `x_val`, `y_val`: validation set samples
 - `x_holdout`, `y_holdout`: holdout set samples
-- `task_predictor`: a `keras` or `tensorflow` model whcih has been compiled
+- `task_predictor`: a `keras` or `tensorflow` model which has been compiled
 - `img_shape`: shape of a single image in the dataset  
 
 `x_{set}` are the input images and `y_{set}` are ground truth labels for the target task. The dimensions of `x_{set}` must be `samples x height x width x channels` in the case that image data is being used; `img_shape` must then be a tuple `(height, width, channels)` (non-image data may be used as input in which case `img_shape` will be the shape of the a single non-image data sample and line 42, 43, 73 and 105 may need to be modified in `envs/task_amenability.py` alongside the controller architecture, however, we have not tested our code with non-image data). The shape of `y_{set}` must be the number of samples along the first dimension and the other dimensions depend on the target task. As an example, if the labels are binary classification labels then `y_set` must have the shape `samples x 1`.
