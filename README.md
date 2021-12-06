@@ -118,6 +118,10 @@ The task predictor is `interface.task_predictor` and can be used in the same way
 
 For more advanced functionality like controller selection on the holdout set and the use of a custom controller with the `DDPGInterface`, please see `pneumoniamnist_experiment.py`. To use a custom controller with the `PPOInterface` please refer to guidance [here](https://stable-baselines.readthedocs.io/en/master/guide/custom_policy.html) and modify line 43 in `interface.py` accordingly. If the sorting algorithm used for controller selection of the holdout set needs to be modified, please refer to the guidance [here](https://numpy.org/doc/stable/reference/generated/numpy.argsort.html) and modify line 123 in `pneumonia_experiment.py` and line 103 in `pneumoniamnist_experiment_test_final_models.py`, accordingly.
 
+#### Notes on training times
+
+Training times may vary depending on the downstream target task. The system took approximately 12h to train on a single Nvidia Quadro P5000 GPU for the target tasks of prostate gland presence detection and segmentation for 2D ultrasound images. Whereas for a task of prostate lesion segmentation on 3D MR images the approximate training time for the IQA system was 24h on a single Nvidia Tesla V100 GPU.
+
 #### Notes on dependencies
 
 To install dependencies run the command `pip install -r requirements.txt`.
