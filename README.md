@@ -1,8 +1,8 @@
-# Image quality assessment for machine learning tasks using meta-reinforcement learning
+# Active learning using adaptable task-based prioritisation
 
 _This repository presents the code and the public dataset experiments, described in the following submitted work._
 
-Authors: Shaheer U. Saeed [1], Yunguan Fu [1, 2], Vasilis Stavrinides [3, 4], Zachary M. C. Baum [1], Qianye Yang [1], Mirabela Rusu [5], Richard E. Fan [6], Geoffrey A. Sonn [5, 6], J. Alison Noble [7], Dean C. Barratt [1], Yipeng Hu [1, 7].
+Authors: Shaheer U. Saeed [1], João Ramalhinho [1], Mark Pinnock [1], Ziyi Shen [1], Yunguan Fu [1, 2], Nina Montaña-Brown [1], Ester Bonmati [1, 3], Dean C. Barratt [1], Stephen P. Pereira [4], Brian Davidson [5], Matthew J. Clarkson [1], Yipeng Hu [1]
 
 Affiliations:  
 [1] Centre for Medical Image Computing,  
@@ -10,16 +10,18 @@ Affiliations:
     Department of Medical Physics \& Biomedical Engineering,  
     University College London, London, UK.  
 [2] InstaDeep, London, UK.  
-[3] Division of Surgery \& Interventional Science, University College London, London, UK.  
-[4] Department of Urology, University College Hospital NHS Foundation Trust, London, UK.  
-[5] Department of Radiology, Stanford University, Stanford, California, USA.  
-[6] Department of Urology, Stanford University, Stanford, California, USA.  
-[7] Department of Engineering Science, University of Oxford, Oxford, UK.
+[3] School of Computer Science and Engineering, University of Westminster, London, UK.  
+[4] Institute for Liver and Digestive Health, University College London, London, UK.  
+[5] Division of Surgery and Interventional Sciences, University College London, London, UK.
+
 
 ### Previous works
 
-1) [Saeed, S.U., Fu, Y., Baum, Z.M., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Barratt, D.C. and Hu, Y., 2021, June. Learning image quality assessment by reinforcing task amenable data selection. In International Conference on Information Processing in Medical Imaging (pp. 755-766). Springer, Cham.](https://link.springer.com/chapter/10.1007/978-3-030-78191-0_58)  
-2) [Saeed, S.U., Fu, Y., Stavrinides, V., Baum, Z., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Noble, J.A., Barratt, D.C. and Hu, Y., 2021. Adaptable image quality assessment using meta-reinforcement learning of task amenability. arXiv preprint arXiv:2108.04359.](https://arxiv.org/abs/2108.04359)
+1) [Saeed, S.U., Fu, Y., Baum, Z.M., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Barratt, D.C. and Hu, Y., 2021. Learning image quality assessment by reinforcing task amenable data selection. In International Conference on Information Processing in Medical Imaging (pp. 755-766). Springer, Cham.](https://link.springer.com/chapter/10.1007/978-3-030-78191-0_58)  
+2) [Saeed, S.U., Fu, Y., Stavrinides, V., Baum, Z., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Noble, J.A., Barratt, D.C. and Hu, Y., 2021. Adaptable image quality assessment using meta-reinforcement learning of task amenability. In Simplifying Medical Ultrasound (ASMUS 2021), Lecture Notes in Computer Science(), vol 12967. Springer, Cham](https://doi.org/10.1007)
+3) [Saeed, S.U., Fu, Y., Stavrinides, V., Baum, Z.M., Yang, Q., Rusu, M., Fan, R.E., Sonn, G.A., Noble, J. A., Barratt, D.C. and Hu, Y., 2022.
+Image quality assessment for machine learning tasks using meta-reinforcement learning, Medical Image Analysis, Volume 78, 2022, 102427.](https://www.sciencedirect.com/science/article/pii/S1361841522000780)
+4) [Saeed, S.U., Yan, W., Fu, Y., Giganti, F., Yang, Q., Baum, Z.M., Rusu, M., Fan, R.E., Sonn, G.A., Emberton, M., Barratt, D.C. and Hu, Y., 2022. Image quality assessment by overlapping task-specific and task-agnostic measures: application to prostate multiparametric MR images for cancer segmentation, Machine Learning for Biomedical Imaging, IPMI 2021 special issue, 2022:004, 2022.](https://www.melba-journal.org/pdf/2022:004.pdf)
 
 ## Image quality assessment using task amenable data selection
 
